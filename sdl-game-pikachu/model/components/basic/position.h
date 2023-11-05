@@ -19,7 +19,7 @@ public:
     
     void            set_x               ( double x )            { this -> x = x; }
     void            set_y               ( double y )            { this -> y = y; }
-    void            set_pos             ( position pos )        { set_x( pos.get_x() ); set_y( pos.get_y(); ) }
+    void            set_pos             ( position pos )        { set_x( pos.get_x() ); set_y( pos.get_y()); }
     
     void add_x ( double value ) {
         

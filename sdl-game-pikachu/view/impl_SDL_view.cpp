@@ -5,6 +5,7 @@
 //  Created by Ondřej März on 05.11.2023.
 //
 
+#include <iostream>
 #include "impl_SDL_view.hpp"
 
 #include "game_model.h"
@@ -249,6 +250,7 @@ bool imp_view_SDL::init ( void ) {
     move_texture_animation[5].y = 0;
     move_texture_animation[5].w = 128;
     move_texture_animation[5].h = 128;
+    
     /*
     int i = 0;
     
@@ -285,13 +287,13 @@ void imp_view_SDL::draw_bckg() {
 void imp_view_SDL::draw_char() {
     
     // When is spell casting
-    if (model -> char_move_in_use() != -1) {
-        
-        draw_char_move(model -> char_move_in_use());
-        update_cnt++;
-    }
+    //if (model -> char_move_in_use() != -1) {
+    //
+    //    draw_char_move(model -> char_move_in_use());
+    //    update_cnt++;
+    //}
     // Otherwise
-    else {
+    //else {
         
         if (update_cnt >= 40) { update_cnt = 10; draw_char_move(1); }
         else if (update_cnt > 0) { update_cnt--; draw_char_move(1); }
@@ -299,7 +301,7 @@ void imp_view_SDL::draw_char() {
             draw_char_run();
             update_cnt = 0;
         }
-    }
+    //}
 }
 
 void imp_view_SDL::draw_char_move(int move_id) {

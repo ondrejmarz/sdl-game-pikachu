@@ -5,9 +5,9 @@
 //  Created by Ondřej März on 05.11.2023.
 //
 
-#include "model/game_model.hpp"
-#include "view/impl_view_SDL.hpp"
-#include "controller/impl_controller.hpp"
+#include "game_model.h"
+#include "impl_SDL_view.hpp"
+#include "impl_controller.hpp"
 
 int main (int argc, const char **argv) {
     
@@ -20,7 +20,7 @@ int main (int argc, const char **argv) {
     
     game_model = new class game_model();
     game_view = new imp_view_SDL( game_model );
-    game_control = new imp_controller( game_model );
+    game_control = new impl_controller( game_model );
     
     if (! game_view -> init() ) return 1;
     
@@ -41,7 +41,7 @@ int main (int argc, const char **argv) {
             
             if      ( e.type == SDL_QUIT    ) quit = true;
             else if ( e.type == SDL_KEYDOWN ) game_control -> key_pressed(e.key.keysym);
-            else if ( e.type == SDL_KEYUP   ) game_control -> key_unpressed(e.key.keysym);
+            else if ( e.type == SDL_KEYUP   ) game_control -> key_released(e.key.keysym);
         }
         
         game_control    -> handle_input();

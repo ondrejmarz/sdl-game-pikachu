@@ -10,11 +10,9 @@
 
 #include "i_view.h"
 
-#include <iostream>
 #include <string>
 #include <vector>
 #include <SDL2/SDL.h>
-#include <stdio.h>
 
 class game_model;
 

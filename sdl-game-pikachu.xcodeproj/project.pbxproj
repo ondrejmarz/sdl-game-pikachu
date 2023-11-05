@@ -10,6 +10,7 @@
 		295F0CEE2AF7958900412EE1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 295F0CED2AF7958900412EE1 /* main.cpp */; };
 		295F0CF62AF795E200412EE1 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 295F0CF52AF795E200412EE1 /* SDL2.framework */; };
 		295F0CFF2AF7987200412EE1 /* game_model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 295F0CFD2AF7987200412EE1 /* game_model.cpp */; };
+		295F0D0A2AF7AB2F00412EE1 /* impl_SDL_view.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 295F0D082AF7AB2F00412EE1 /* impl_SDL_view.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +35,10 @@
 		295F0D022AF7998900412EE1 /* position.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = position.h; sourceTree = "<group>"; };
 		295F0D042AF79B9000412EE1 /* area.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = area.h; sourceTree = "<group>"; };
 		295F0D052AF79BC800412EE1 /* object.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = object.h; sourceTree = "<group>"; };
+		295F0D062AF7A4BD00412EE1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		295F0D072AF7AB1000412EE1 /* i_view.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = i_view.h; sourceTree = "<group>"; };
+		295F0D082AF7AB2F00412EE1 /* impl_SDL_view.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = impl_SDL_view.cpp; sourceTree = "<group>"; };
+		295F0D092AF7AB2F00412EE1 /* impl_SDL_view.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = impl_SDL_view.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +56,7 @@
 		295F0CE12AF7958900412EE1 = {
 			isa = PBXGroup;
 			children = (
+				295F0D062AF7A4BD00412EE1 /* README.md */,
 				295F0CEC2AF7958900412EE1 /* sdl-game-pikachu */,
 				295F0CEB2AF7958900412EE1 /* Products */,
 				295F0CF42AF795E200412EE1 /* Frameworks */,
@@ -95,6 +101,9 @@
 		295F0CF82AF7975C00412EE1 /* view */ = {
 			isa = PBXGroup;
 			children = (
+				295F0D072AF7AB1000412EE1 /* i_view.h */,
+				295F0D092AF7AB2F00412EE1 /* impl_SDL_view.hpp */,
+				295F0D082AF7AB2F00412EE1 /* impl_SDL_view.cpp */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -192,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				295F0D0A2AF7AB2F00412EE1 /* impl_SDL_view.cpp in Sources */,
 				295F0CEE2AF7958900412EE1 /* main.cpp in Sources */,
 				295F0CFF2AF7987200412EE1 /* game_model.cpp in Sources */,
 			);

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		295F0CEE2AF7958900412EE1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 295F0CED2AF7958900412EE1 /* main.cpp */; };
+		295F0CF62AF795E200412EE1 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 295F0CF52AF795E200412EE1 /* SDL2.framework */; };
+		295F0CFF2AF7987200412EE1 /* game_model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 295F0CFD2AF7987200412EE1 /* game_model.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,13 @@
 /* Begin PBXFileReference section */
 		295F0CEA2AF7958900412EE1 /* sdl-game-pikachu */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "sdl-game-pikachu"; sourceTree = BUILT_PRODUCTS_DIR; };
 		295F0CED2AF7958900412EE1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		295F0CF52AF795E200412EE1 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		295F0CFA2AF7979C00412EE1 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		295F0CFC2AF7986000412EE1 /* game_model.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = game_model.h; sourceTree = "<group>"; };
+		295F0CFD2AF7987200412EE1 /* game_model.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = game_model.cpp; sourceTree = "<group>"; };
+		295F0D022AF7998900412EE1 /* position.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = position.h; sourceTree = "<group>"; };
+		295F0D042AF79B9000412EE1 /* area.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = area.h; sourceTree = "<group>"; };
+		295F0D052AF79BC800412EE1 /* object.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = object.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				295F0CF62AF795E200412EE1 /* SDL2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +53,7 @@
 			children = (
 				295F0CEC2AF7958900412EE1 /* sdl-game-pikachu */,
 				295F0CEB2AF7958900412EE1 /* Products */,
+				295F0CF42AF795E200412EE1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -57,9 +68,71 @@
 		295F0CEC2AF7958900412EE1 /* sdl-game-pikachu */ = {
 			isa = PBXGroup;
 			children = (
+				295F0CF82AF7975C00412EE1 /* view */,
+				295F0CF72AF7975200412EE1 /* controller */,
+				295F0CF92AF7976700412EE1 /* model */,
 				295F0CED2AF7958900412EE1 /* main.cpp */,
+				295F0CFA2AF7979C00412EE1 /* config.h */,
 			);
 			path = "sdl-game-pikachu";
+			sourceTree = "<group>";
+		};
+		295F0CF42AF795E200412EE1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				295F0CF52AF795E200412EE1 /* SDL2.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		295F0CF72AF7975200412EE1 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		295F0CF82AF7975C00412EE1 /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		295F0CF92AF7976700412EE1 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				295F0CFB2AF797E500412EE1 /* components */,
+				295F0CFC2AF7986000412EE1 /* game_model.h */,
+				295F0CFD2AF7987200412EE1 /* game_model.cpp */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		295F0CFB2AF797E500412EE1 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				295F0D012AF798FE00412EE1 /* game_objects */,
+				295F0D002AF798F800412EE1 /* basic */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		295F0D002AF798F800412EE1 /* basic */ = {
+			isa = PBXGroup;
+			children = (
+				295F0D052AF79BC800412EE1 /* object.h */,
+				295F0D022AF7998900412EE1 /* position.h */,
+				295F0D042AF79B9000412EE1 /* area.h */,
+			);
+			path = basic;
+			sourceTree = "<group>";
+		};
+		295F0D012AF798FE00412EE1 /* game_objects */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = game_objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -120,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				295F0CEE2AF7958900412EE1 /* main.cpp in Sources */,
+				295F0CFF2AF7987200412EE1 /* game_model.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,6 +313,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -247,6 +325,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

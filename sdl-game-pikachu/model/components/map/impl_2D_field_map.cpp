@@ -34,10 +34,10 @@ bool impl_2D_field::load( void ) {
 
     file_stream >> rows >> cols;
     
-    map = new char * [rows+3];
+    map = new char * [rows];
     
-    for (int i = 0; i < rows+3; i++) {
-        map[i] = new char[cols+3];
+    for (int i = 0; i < rows; i++) {
+        map[i] = new char[cols];
     }
     
     for (int r = 0; r < rows; r++) {
@@ -52,8 +52,8 @@ bool impl_2D_field::load( void ) {
     return true;
 }
 
-bool impl_2D_field::can_walk_here( int x, int y ) const {
-    
+bool impl_2D_field::can_walk_here( double x, double y ) const {
+    std::cout << "at: [" << y*rows << "," << x*cols << "]=" << map[(int)(y * (rows))][(int)(x * (cols))] << std::endl;
     return map[(int)(y * (rows))][(int)(x * (cols))] == 'O';
 }
 

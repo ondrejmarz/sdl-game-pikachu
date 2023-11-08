@@ -29,8 +29,6 @@ void    game_model::set_char_state      ( int dir)      { pika.set_dir(dir); }
 
 //int game_model::char_move_in_use() { return pika.get_move_in_use(); }
 
-//bool game_model::is_char_attacking() { return pika.is_attacking(); }
-
 
 void game_model::add_command( i_command * command ) {
     
@@ -90,18 +88,20 @@ void game_model::move_expiration( void ) {
     std::erase_if( attacks, [](const attack  &m) { return m.did_expire(); } );
 } */
 
-bool game_model::char_standing_still( void ) {
+bool game_model::char_standing_still( void ) const {
     
     return pika.is_still();
 }
-/*
+
+bool game_model::char_attacking( void ) const {
+    
+    return pika.is_attacking();
+}
+
 void game_model::char_attack(int num) {
     
-    if (pika.can_move()) {
-        pika.use_attack(num);
-        attacks.push_back( move( electric, 100, 100, position(pika.get_position().get_x()-50,pika.get_position().get_y()-50), area(100, 100) ) );
-    }
-}*/
+    pika.do_attack(num);
+}
 
 // -4   -3   -2
 //
@@ -120,6 +120,8 @@ bool game_model::allowed_on_map( const position & pos ) const {
 }
 
 void game_model::move_character(int direction, double distance) {
+    
+    if (pika.is_attacking()) return;
     
     pika.step(direction, distance);
     

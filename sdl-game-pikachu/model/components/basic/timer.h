@@ -56,21 +56,19 @@ public:
      * \since This function is available since 1.0.
      *
      */
-    bool elapsed( double sec ) { return sec < (double) ((std::chrono::duration<double>)(std::chrono::steady_clock::now()-start)).count(); }
+    bool elapsed( double sec ) const { return sec < (double) ((std::chrono::duration<double>)(std::chrono::steady_clock::now()-start)).count(); }
     
     /**
      * Compars times.
      *
      * Tests if given number of seconds have passed since construction or reseting.
      *
-     * \param sec seconds that are asked if they have passed.
-     *
      * \return true if given seconds have passed, false otherwise.
      *
      * \since This function is available since 1.0.
      *
      */
-    bool elapsed( void ) { return limit < (double) ((std::chrono::duration<double>)(std::chrono::steady_clock::now()-start)).count(); }
+    bool elapsed( void ) const { return limit < (double) ((std::chrono::duration<double>)(std::chrono::steady_clock::now()-start)).count(); }
     
     /**
      * Resets timer.

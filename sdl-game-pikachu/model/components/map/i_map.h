@@ -16,7 +16,7 @@ public:
     i_map(): rows(0), cols(0) { }
     
     virtual bool load() = 0;
-    virtual bool can_walk_here( int x, int y ) const = 0;
+    virtual bool can_walk_here( double x, double y ) const = 0;
     
 protected:
     

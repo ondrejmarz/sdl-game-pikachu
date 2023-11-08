@@ -28,18 +28,21 @@ public:
     bool want_move();
     void step( int dir, double distance );
     void back( double distance );
-    bool is_still();
+    bool is_still() const;
+    bool is_attacking() const;
     
     int  get_dir( void ) const;
     int  get_facing( void );
     int  get_moves_number( void );
     
+    void do_attack( int attack );
     void set_dir( int dir );
     
 private:
     timer standing_still;
+    timer charging_attack;
     
-    std::vector< attack > attacks;
+    //std::vector< attack > attacks;
     
     int last_step;
     int direction;

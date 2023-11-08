@@ -10,13 +10,15 @@
 character::character(): object( position(100, 100), area(26, 28) ) { }
 
 bool character::want_move() { return direction != 0; }
-bool character::is_still() { return standing_still.elapsed(5); }
+bool character::is_still() const { return standing_still.elapsed(5); }
+bool character::is_attacking() const { return !charging_attack.elapsed(2); }
 
+void character::do_attack( int attack ) { charging_attack.reset(); }
 void character::set_dir( int dir ) { direction = dir; }
 
 int  character::get_dir( void ) const { return direction; }
 int  character::get_facing( void ) { return direction + 4; }
-int  character::get_moves_number( void ) { return (int)attacks.size(); }
+int  character::get_moves_number( void ) { return 2; }
 
 // -4   -3   -2
 //

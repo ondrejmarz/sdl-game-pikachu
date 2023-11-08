@@ -46,9 +46,9 @@ public:
     int     get_char_state          ( void );
     void    set_char_state          (int dir);
     //int     char_move_in_use        ( void );
-    bool    char_standing_still     ( void );
-    bool    is_char_attacking       ( void );
-    //void    char_attack             (int num);
+    bool    char_standing_still     ( void ) const;
+    bool    char_attacking          ( void ) const;
+    void    char_attack             (int num);
     
     bool    is_outside_screen       ( const position & pos ) const;
     bool    allowed_on_map          ( const position & pos ) const;

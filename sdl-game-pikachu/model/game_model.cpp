@@ -5,15 +5,18 @@
 //  Created by Ondřej März on 05.11.2023.
 //
 
+#include "impl_2D_field_map.hpp"
 #include "game_model.h"
 #include "config.h"
 
 //static const pikachu p(electric, 100, 120, 100, position(640, 60), area(26, 28));
 
 game_model::game_model() {
-
-    float RESIZE_X = (float)SCREEN_WIDTH / (float)BCKG_WIDTH;
-    float RESIZE_Y = (float)SCREEN_HEIGHT / (float)BCKG_HEIGHT;
+    
+    map = new impl_2D_field();
+    map -> load();
+    //float RESIZE_X = (float)SCREEN_WIDTH / (float)BCKG_WIDTH;
+    //float RESIZE_Y = (float)SCREEN_HEIGHT / (float)BCKG_HEIGHT;
 }
 
 int game_model::char_pos_x() { return (int) pika.get_position().get_x(); }
@@ -48,8 +51,16 @@ void game_model::update( void ) {
     
     //if (pika.can_move() && pika.want_move()) {
         
-        //check_char_collisions();
-        pika.step();
+    pika.step();
+    
+    /**
+     * Sending relative position
+     */
+    if (!map -> can_walk_here(
+                        position(
+                            pika.get_position().get_x()/SCREEN_WIDTH,
+                            pika.get_position().get_y()/SCREEN_HEIGHT
+                        ))) pika.back();
     //}
     
     //move_expiration();
@@ -86,25 +97,7 @@ void game_model::delete_dead( void ) {
 void game_model::move_expiration( void ) {
     
     std::erase_if( attacks, [](const attack  &m) { return m.did_expire(); } );
-}
-
-void game_model::check_char_collisions( void ) {
-    
-    int allwd_dir = 0;
-    int wantd_dir = pika.get_direction() + 4;
-    
-    if ( wantd_dir % 3 == 0 && check_char_coll_left() ) // definitely going left
-        allwd_dir += -1;
-    else if ( (wantd_dir - 2) % 3 == 0 && check_char_coll_rght() ) // definitely going right
-        allwd_dir += 1;
-    
-    if ( wantd_dir < 3 && check_char_coll_upst() ) // definitely going up
-        allwd_dir += -3;
-    else if ( wantd_dir > 5 && check_char_coll_down() ) // definitely going down
-        allwd_dir += 3;
-    
-    move_character(allwd_dir);
-}*/
+} */
 
 bool game_model::char_standing_still( void ) {
     

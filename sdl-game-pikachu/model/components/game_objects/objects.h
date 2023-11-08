@@ -16,6 +16,7 @@
 
 class attack: public object {
     
+    
 };
 
 
@@ -26,9 +27,10 @@ public:
     
     bool want_move();
     void step();
+    void back();
     bool is_still();
     
-    int  get_dir( void );
+    int  get_dir( void ) const;
     int  get_facing( void );
     int  get_moves_number( void );
     
@@ -43,7 +45,4 @@ private:
     int direction;
 };
 
-class wall: public object {
-    
-};
 #endif /* objects_h */

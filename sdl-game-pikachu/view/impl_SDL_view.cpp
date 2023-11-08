@@ -295,12 +295,12 @@ void imp_view_SDL::draw_char() {
     // Otherwise
     //else {
         
-        if (update_cnt >= 40) { update_cnt = 10; draw_char_move(1); }
-        else if (update_cnt > 0) { update_cnt--; draw_char_move(1); }
-        else {
+        //if (update_cnt >= 40) { update_cnt = 10; draw_char_move(1); }
+        //else if (update_cnt > 0) { update_cnt--; draw_char_move(1); }
+        //else {
             draw_char_run();
-            update_cnt = 0;
-        }
+            //update_cnt = 0;
+        //}
     //}
 }
 

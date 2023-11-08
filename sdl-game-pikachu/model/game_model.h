@@ -9,6 +9,7 @@
 #define game_model_h
 
 #include "objects.h"
+#include "i_map.h"
 
 #include <queue>
 #include <vector>
@@ -49,8 +50,6 @@ public:
     
     void    move_character          (int direction);
     
-    //void    check_char_collisions   ( void );
-    
     void    move_expiration         ( void );
     void    moves_hit_angry         ( void );
     void    delete_dead             ( void );
@@ -60,16 +59,12 @@ public:
     
 private:
     
-    //std::queue  < i_command * > queue_commands = {};
-    
-    std::vector < wall > map_walls_rght;
-    std::vector < wall > map_walls_left;
-    std::vector < wall > map_walls_down;
-    std::vector < wall > map_walls_upst;
+    std::queue  < i_command * > commands = {};
     
     std::vector < character > enemies;
     std::vector < attack > attacks;
     
+    i_map * map;
     character pika;
 };
 

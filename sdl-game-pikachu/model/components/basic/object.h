@@ -18,8 +18,8 @@ public:
     object(const position &);
     object(const position &, const area &);
     
-    position & get_position( void );
-    area     & get_area    ( void );
+    const position & get_position( void ) const;
+    const area     & get_area    ( void ) const;
     
     double get_other_x( void ) const;
     double get_other_y( void ) const;
@@ -27,8 +27,7 @@ public:
     void set_position   ( const position & );
     void set_area       ( const area & );
     
-    bool intersects( object & other );
-    
+    bool intersects( const object & other ) const;
     //virtual void accept( visitor * ) const = 0;
     
 protected:

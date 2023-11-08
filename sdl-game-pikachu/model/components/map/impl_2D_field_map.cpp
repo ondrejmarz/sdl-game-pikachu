@@ -11,27 +11,7 @@
 
 #include "impl_2D_field_map.hpp"
 
-impl_2D_field::impl_2D_field( void ) {
-    
-    rows = 50;
-    cols = 50;
-    
-    map = new char * [rows];
-    
-    for (int i = 0; i < rows; i++) {
-        map[i] = new char[cols];
-    }
-    
-    for (int r = 0; r < rows; r++) {
-        for (int c = 0; c < cols; c++) {
-            
-            if (r == 0 || c == 0 || r == rows-3 || c == cols-3)
-                map[r][c] = 'X';
-            else
-                map[r][c] = 'O';
-        }
-    }
-}
+impl_2D_field::impl_2D_field( void ) { }
 
 impl_2D_field::~impl_2D_field( void ) {
     
@@ -43,7 +23,7 @@ impl_2D_field::~impl_2D_field( void ) {
 
 bool impl_2D_field::load( void ) {
     
-    std::string file_name = "./sdl-game-pikachu/model/map/2D_field_map.txt";
+    std::string file_name = "/Users/ondrejmars/Desktop/pro_grams/game/assets/2D_field_map.txt";
     std::ifstream file_stream(file_name);
     
     if (!file_stream.is_open()) {
@@ -53,6 +33,12 @@ bool impl_2D_field::load( void ) {
     }
 
     file_stream >> rows >> cols;
+    
+    map = new char * [rows+3];
+    
+    for (int i = 0; i < rows+3; i++) {
+        map[i] = new char[cols+3];
+    }
     
     for (int r = 0; r < rows; r++) {
         for (int c = 0; c < cols; c++) {
@@ -66,8 +52,8 @@ bool impl_2D_field::load( void ) {
     return true;
 }
 
-bool impl_2D_field::can_walk_here(const position & pos) {
+bool impl_2D_field::can_walk_here( int x, int y ) const {
     
-    return map[(int)(pos.get_x() * (cols-1))][(int)(pos.get_y() * (rows-1))] == 'O'; 
+    return map[(int)(y * (rows))][(int)(x * (cols))] == 'O';
 }
 

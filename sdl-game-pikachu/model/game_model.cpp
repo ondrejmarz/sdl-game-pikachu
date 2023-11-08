@@ -24,43 +24,34 @@ int game_model::char_pos_y() { return (int) pika.get_position().get_y(); }
 
 int game_model::char_moves_size() { return pika.get_moves_number(); }
 
-int game_model::char_state() { if (char_standing_still()) return 4; return pika.get_facing(); }
+int     game_model::get_char_state      ( void )        { if (char_standing_still()) return 4; return pika.get_facing(); }
+void    game_model::set_char_state      ( int dir)      { pika.set_dir(dir); }
 
 //int game_model::char_move_in_use() { return pika.get_move_in_use(); }
 
 //bool game_model::is_char_attacking() { return pika.is_attacking(); }
 
-/*
+
 void game_model::add_command( i_command * command ) {
     
-    queue_commands.push( command );
+    commands.push( command );
 }
 
 void game_model::exe_commands( void ) {
     
-    while (!queue_commands.empty()) {
+    while (!commands.empty()) {
      
-        queue_commands.front() -> execute();
-        queue_commands.pop();
+        commands.front() -> execute();
+        commands.pop();
     }
-}*/
+}
 
 void game_model::update( void ) {
     
-    //exe_commands();
+    exe_commands();
     
     //if (pika.can_move() && pika.want_move()) {
-        
-    pika.step();
     
-    /**
-     * Sending relative position
-     */
-    if (!map -> can_walk_here(
-                        position(
-                            pika.get_position().get_x()/SCREEN_WIDTH,
-                            pika.get_position().get_y()/SCREEN_HEIGHT
-                        ))) pika.back();
     //}
     
     //move_expiration();
@@ -118,9 +109,22 @@ void game_model::char_attack(int num) {
 //
 //  2    3    4
 
-void game_model::move_character(int dir) {
+bool game_model::is_outside_screen( const position & pos ) const {
     
-    pika.set_dir(dir);
+    return (pos.get_x() <= 0 || pos.get_y() <= 0 || pos.get_x() >= SCREEN_WIDTH || pos.get_y() >= SCREEN_HEIGHT);
+}
+
+bool game_model::allowed_on_map( const position & pos ) const {
+    
+    return map -> can_walk_here( pos.get_x()/SCREEN_WIDTH, pos.get_y()/SCREEN_HEIGHT);
+}
+
+void game_model::move_character(int direction, double distance) {
+    
+    pika.step(direction, distance);
+    
+    if (is_outside_screen(    pika.get_position() )) pika.back(distance);
+    else if (!allowed_on_map( pika.get_position() )) pika.back(distance);
 }
 
 const std::vector < character > & game_model::get_enemies( void ) {

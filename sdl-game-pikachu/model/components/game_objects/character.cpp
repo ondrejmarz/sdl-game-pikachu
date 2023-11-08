@@ -12,53 +12,38 @@ character::character(): object( position(100, 100), area(26, 28) ) { }
 bool character::want_move() { return direction != 0; }
 bool character::is_still() { return standing_still.elapsed(5); }
 
-int  character::get_dir( void ) const { return direction; }
-int  character::get_facing( void ) { return last_step + 4; }
-int  character::get_moves_number( void ) { return (int)attacks.size(); }
-
 void character::set_dir( int dir ) { direction = dir; }
 
-void character::step( void ) {
+int  character::get_dir( void ) const { return direction; }
+int  character::get_facing( void ) { return direction + 4; }
+int  character::get_moves_number( void ) { return (int)attacks.size(); }
 
-    if (direction == 0) return;
+// -4   -3   -2
+//
+// -1    0    1
+//
+//  2    3    4
+
+void character::step( int dir, double distance ) {
+
+    last_step = dir;
     
-    last_step = direction;
-    
-    switch (direction+4) {
-        case 0:
-            pos.add_x(-DIAGONAL_STEP);
-            pos.add_y(-DIAGONAL_STEP);
-            break;
-            
+    switch (dir+4) {
+        
         case 1:
-            pos.add_y(-STEP);
-            break;
-            
-        case 2:
-            pos.add_x(DIAGONAL_STEP);
-            pos.add_y(-DIAGONAL_STEP);
+            pos.add_y(-distance);
             break;
             
         case 3:
-            pos.add_x(-STEP);
+            pos.add_x(-distance);
             break;
             
         case 5:
-            pos.add_x(STEP);
-            break;
-            
-        case 6:
-            pos.add_x(-DIAGONAL_STEP);
-            pos.add_y(DIAGONAL_STEP);
+            pos.add_x( distance);
             break;
             
         case 7:
-            pos.add_y(STEP);
-            break;
-            
-        case 8:
-            pos.add_x(DIAGONAL_STEP);
-            pos.add_y(DIAGONAL_STEP);
+            pos.add_y( distance);
             break;
             
         default:
@@ -69,49 +54,28 @@ void character::step( void ) {
     standing_still.reset();
 }
 
-void character::back( void ) {
+void character::back( double distance ) {
     
     switch (last_step+4) {
-        case 0:
-            pos.add_x(DIAGONAL_STEP);
-            pos.add_y(DIAGONAL_STEP);
-            break;
-            
+        
         case 1:
-            pos.add_y(STEP);
-            break;
-            
-        case 2:
-            pos.add_x(-DIAGONAL_STEP);
-            pos.add_y(DIAGONAL_STEP);
+            pos.add_y( distance);
             break;
             
         case 3:
-            pos.add_x(STEP);
+            pos.add_x( distance);
             break;
             
         case 5:
-            pos.add_x(-STEP);
-            break;
-            
-        case 6:
-            pos.add_x(DIAGONAL_STEP);
-            pos.add_y(-DIAGONAL_STEP);
+            pos.add_x(-distance);
             break;
             
         case 7:
-            pos.add_y(-STEP);
-            break;
-            
-        case 8:
-            pos.add_x(-DIAGONAL_STEP);
-            pos.add_y(-DIAGONAL_STEP);
+            pos.add_y(-distance);
             break;
             
         default:
             break;
             
     }
-    
-    standing_still.reset();
 }

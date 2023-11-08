@@ -330,7 +330,7 @@ void imp_view_SDL::draw_char_move(int move_id) {
 
 void imp_view_SDL::draw_char_run (void) {
     
-    SDL_Rect * src_rec = &char_text_states[ model->char_state() ];
+    SDL_Rect * src_rec = &char_text_states[ model-> get_char_state() ];
     
     SDL_RenderCopy(renderer,
                    char_texture,

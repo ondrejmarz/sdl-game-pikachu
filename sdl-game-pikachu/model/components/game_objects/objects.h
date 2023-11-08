@@ -26,8 +26,8 @@ public:
     character();
     
     bool want_move();
-    void step();
-    void back();
+    void step( int dir, double distance );
+    void back( double distance );
     bool is_still();
     
     int  get_dir( void ) const;

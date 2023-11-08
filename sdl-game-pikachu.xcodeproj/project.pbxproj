@@ -17,6 +17,7 @@
 		295F0D182AF80E5700412EE1 /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 295F0D172AF80E5700412EE1 /* SDL2_image.framework */; };
 		295F0D1A2AF8117900412EE1 /* object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 295F0D192AF8117900412EE1 /* object.cpp */; };
 		295F0D1F2AFA8EED00412EE1 /* impl_2D_field_map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 295F0D1D2AFA8EED00412EE1 /* impl_2D_field_map.cpp */; };
+		295F0D242AFBB78500412EE1 /* impl_command.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 295F0D222AFBB78500412EE1 /* impl_command.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,7 +58,9 @@
 		295F0D1C2AFA8B3C00412EE1 /* i_map.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = i_map.h; sourceTree = "<group>"; };
 		295F0D1D2AFA8EED00412EE1 /* impl_2D_field_map.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = impl_2D_field_map.cpp; sourceTree = "<group>"; };
 		295F0D1E2AFA8EED00412EE1 /* impl_2D_field_map.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = impl_2D_field_map.hpp; sourceTree = "<group>"; };
-		295F0D202AFA911D00412EE1 /* 2D_field_map.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = 2D_field_map.txt; sourceTree = "<group>"; };
+		295F0D222AFBB78500412EE1 /* impl_command.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = impl_command.cpp; sourceTree = "<group>"; };
+		295F0D232AFBB78500412EE1 /* impl_command.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = impl_command.hpp; sourceTree = "<group>"; };
+		295F0D252AFBB79100412EE1 /* i_command.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = i_command.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +97,7 @@
 		295F0CEC2AF7958900412EE1 /* sdl-game-pikachu */ = {
 			isa = PBXGroup;
 			children = (
+				295F0D212AFBB76E00412EE1 /* command */,
 				295F0CF82AF7975C00412EE1 /* view */,
 				295F0CF72AF7975200412EE1 /* controller */,
 				295F0CF92AF7976700412EE1 /* model */,
@@ -180,9 +184,18 @@
 				295F0D1C2AFA8B3C00412EE1 /* i_map.h */,
 				295F0D1E2AFA8EED00412EE1 /* impl_2D_field_map.hpp */,
 				295F0D1D2AFA8EED00412EE1 /* impl_2D_field_map.cpp */,
-				295F0D202AFA911D00412EE1 /* 2D_field_map.txt */,
 			);
 			path = map;
+			sourceTree = "<group>";
+		};
+		295F0D212AFBB76E00412EE1 /* command */ = {
+			isa = PBXGroup;
+			children = (
+				295F0D252AFBB79100412EE1 /* i_command.h */,
+				295F0D232AFBB78500412EE1 /* impl_command.hpp */,
+				295F0D222AFBB78500412EE1 /* impl_command.cpp */,
+			);
+			path = command;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,6 +258,7 @@
 				295F0D0A2AF7AB2F00412EE1 /* impl_SDL_view.cpp in Sources */,
 				295F0CEE2AF7958900412EE1 /* main.cpp in Sources */,
 				295F0D1A2AF8117900412EE1 /* object.cpp in Sources */,
+				295F0D242AFBB78500412EE1 /* impl_command.cpp in Sources */,
 				295F0D1F2AFA8EED00412EE1 /* impl_2D_field_map.cpp in Sources */,
 				295F0CFF2AF7987200412EE1 /* game_model.cpp in Sources */,
 				295F0D152AF7E8F600412EE1 /* impl_controller.cpp in Sources */,

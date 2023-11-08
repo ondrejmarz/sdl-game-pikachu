@@ -10,6 +10,7 @@
 
 #include "objects.h"
 #include "i_map.h"
+#include "i_command.h"
 
 #include <queue>
 #include <vector>
@@ -30,8 +31,8 @@ public:
      * \sa exe\_commands()
      *
      */
-    //void                add_command         ( i_command * command);
-    //void                exe_commands        ( void );
+    void                add_command         ( i_command * command);
+    void                exe_commands        ( void );
     
     void                update              ( void );
     
@@ -42,18 +43,20 @@ public:
     int     char_pos_x              ( void );
     int     char_pos_y              ( void );
     int     char_moves_size         ( void );
-    int     char_state              ( void );
+    int     get_char_state          ( void );
+    void    set_char_state          (int dir);
     //int     char_move_in_use        ( void );
     bool    char_standing_still     ( void );
     bool    is_char_attacking       ( void );
     //void    char_attack             (int num);
     
-    void    move_character          (int direction);
+    bool    is_outside_screen       ( const position & pos ) const;
+    bool    allowed_on_map          ( const position & pos ) const;
+    void    move_character          ( int direction, double distance);
     
     void    move_expiration         ( void );
     void    moves_hit_angry         ( void );
     void    delete_dead             ( void );
-    
     
     const std::vector < character > & get_enemies ( void );
     

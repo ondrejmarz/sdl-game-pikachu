@@ -17,7 +17,7 @@ public:
     ~impl_2D_field();
     
     bool load( void );
-    bool can_walk_here( const position & pos );
+    bool can_walk_here( int x, int y ) const;
     
 protected:
     

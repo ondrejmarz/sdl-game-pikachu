@@ -7,6 +7,17 @@
 
 #include "impl_controller.hpp"
 #include "game_model.h"
+#include "impl_command.hpp"
+
+void impl_controller::key_pressed(SDL_Keysym key) {
+    
+    key_state.insert(key.sym);
+}
+
+void impl_controller::key_released(SDL_Keysym key) {
+    
+    key_state.erase(key.sym);
+}
 
 void impl_controller::handle_input( void ) {
     
@@ -52,15 +63,44 @@ void impl_controller::handle_input( void ) {
         }
     }
     
-    model -> move_character(direction);
-}
-
-void impl_controller::key_pressed(SDL_Keysym key) {
+    if (direction == 0) return;
     
-    key_state.insert(key.sym);
-}
-
-void impl_controller::key_released(SDL_Keysym key) {
-    
-    key_state.erase(key.sym);
+    switch (direction+4) {
+        
+        case 0:
+            model->add_command( new move_char_ul_command(model) );
+            break;
+            
+        case 1:
+            model->add_command( new move_char_u_command(model) );
+            break;
+            
+        case 2:
+            model->add_command( new move_char_ur_command(model) );
+            break;
+            
+        case 3:
+            model->add_command( new move_char_l_command(model) );
+            break;
+            
+        case 5:
+            model->add_command( new move_char_r_command(model) );
+            break;
+            
+        case 6:
+            model->add_command( new move_char_dl_command(model) );
+            break;
+            
+        case 7:
+            model->add_command( new move_char_d_command(model) );
+            break;
+            
+        case 8:
+            model->add_command( new move_char_dr_command(model) );
+            break;
+            
+        default:
+            break;
+            
+    }
 }

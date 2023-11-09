@@ -8,6 +8,9 @@
 #include "impl_command.hpp"
 #include "game_model.h"
 
+#include <thread>
+#include <chrono>
+
 // -4   -3   -2
 //
 // -1    0    1
@@ -56,4 +59,14 @@ void move_char_dr_command::execute() const {
     model -> move_character( 3, DIAGONAL_STEP);
     model -> move_character( 1, DIAGONAL_STEP);
     model -> set_char_state( 4);
+}
+
+void move_quick_attack_char_command::execute() const {
+    
+    model -> char_attack(0);
+}
+
+void move_discharge_char_command::execute() const {
+    
+    model -> char_attack(1);
 }

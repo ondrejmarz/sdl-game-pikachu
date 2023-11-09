@@ -53,7 +53,7 @@ bool impl_2D_field::load( void ) {
 }
 
 bool impl_2D_field::can_walk_here( double x, double y ) const {
-    std::cout << "at: [" << y*rows << "," << x*cols << "]=" << map[(int)(y * (rows))][(int)(x * (cols))] << std::endl;
+    //std::cout << "at: [" << y*rows << "," << x*cols << "]=" << map[(int)(y * (rows))][(int)(x * (cols))] << std::endl;
     return map[(int)(y * (rows))][(int)(x * (cols))] == 'O';
 }
 

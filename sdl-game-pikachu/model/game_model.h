@@ -49,6 +49,9 @@ public:
     bool    char_standing_still     ( void ) const;
     bool    char_attacking          ( void ) const;
     void    char_attack             (int num);
+    void    char_charge             (double sec);
+    
+    void    add_char_speed_modifier( double add );
     
     bool    is_outside_screen       ( const position & pos ) const;
     bool    allowed_on_map          ( const position & pos ) const;
@@ -65,10 +68,10 @@ private:
     std::queue  < i_command * > commands = {};
     
     std::vector < character > enemies;
-    std::vector < attack > attacks;
+    //std::vector < attack > attacks;
     
     i_map * map;
-    character pika;
+    character * pika;
 };
 
 #endif /* game_model_h */

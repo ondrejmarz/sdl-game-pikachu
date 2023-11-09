@@ -80,6 +80,18 @@ public:
      */
     void reset( void ) { start = std::chrono::steady_clock::now(); }
     
+    /**
+     * Sets timer limit.
+     *
+     * Limit is used when asked if elapsed.
+     *
+     * \param sec seconds that will be asked if they have elapsed.
+     *
+     * \since This function is available since 1.0.
+     *
+     */
+    void set( double sec ) { limit = sec; }
+    
 private:
     
     /**

@@ -50,11 +50,11 @@ void impl_controller::handle_input( void ) {
                     break;
                     
                 case SDLK_1:
-                    model -> char_attack( 0 );
+                    model -> add_command(new move_quick_attack_char_command(model));
                     break;
                     
                 case SDLK_2:
-                    model -> char_attack( 1 );
+                    model -> add_command(new move_discharge_char_command(model));
                     break;
 
                 default:

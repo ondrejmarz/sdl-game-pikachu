@@ -9,8 +9,9 @@
 
 #include "object.h"
 
-object::object(const position & pos): pos(pos) { }
-object::object(const position & pos, const area & are): pos(pos), are(are) { }
+object::object( void ) { }
+object::object( const position & pos): pos(pos) { }
+object::object( const position & pos, const area & are): pos(pos), are(are) { }
 
 const position & object::get_position( void ) const { return pos; }
 const area     & object::get_area    ( void ) const { return are; }

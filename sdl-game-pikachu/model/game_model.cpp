@@ -9,25 +9,36 @@
 #include "game_model.h"
 #include "config.h"
 
+#include <thread>
+#include <chrono>
+#include <iostream>
+
 //static const pikachu p(electric, 100, 120, 100, position(640, 60), area(26, 28));
 
 game_model::game_model() {
     
+    pika = new character(this);
     map = new impl_2D_field();
     map -> load();
     //float RESIZE_X = (float)SCREEN_WIDTH / (float)BCKG_WIDTH;
     //float RESIZE_Y = (float)SCREEN_HEIGHT / (float)BCKG_HEIGHT;
 }
 
-int game_model::char_pos_x() { return (int) pika.get_position().get_x(); }
-int game_model::char_pos_y() { return (int) pika.get_position().get_y(); }
+int game_model::char_pos_x() { return (int) pika -> get_position().get_x(); }
+int game_model::char_pos_y() { return (int) pika -> get_position().get_y(); }
 
-int game_model::char_moves_size() { return pika.get_moves_number(); }
+int game_model::char_moves_size() { return pika -> get_moves_number(); }
 
-int     game_model::get_char_state      ( void )        { if (char_standing_still()) return 4; return pika.get_facing(); }
-void    game_model::set_char_state      ( int dir)      { pika.set_dir(dir); }
+void    game_model::add_char_speed_modifier( double add ) {
+    
+    std::cout << "Speed + " << add << std::endl;
+    pika -> add_speed( add);
+}
 
-//int game_model::char_move_in_use() { return pika.get_move_in_use(); }
+int     game_model::get_char_state      ( void )        { if (char_standing_still()) return 4; return pika -> get_facing(); }
+void    game_model::set_char_state      ( int dir)      { pika -> set_dir(dir); }
+
+//int game_model::char_move_in_use() { return pika -> get_move_in_use(); }
 
 
 void game_model::add_command( i_command * command ) {
@@ -48,9 +59,7 @@ void game_model::update( void ) {
     
     exe_commands();
     
-    //if (pika.can_move() && pika.want_move()) {
-    
-    //}
+    pika -> do_moves();
     
     //move_expiration();
     //moves_hit_angry();
@@ -73,7 +82,7 @@ void game_model::moves_hit_angry( void ) {
         for (auto const &a: attacks) {
             
             if (common_intersects(e, a))
-                e.recive_damage( pika.get_atck(), pika.has_atck_stab(a), a );
+                e.recive_damage( pika -> get_atck(), pika -> has_atck_stab(a), a );
         }
     }
 }
@@ -90,17 +99,22 @@ void game_model::move_expiration( void ) {
 
 bool game_model::char_standing_still( void ) const {
     
-    return pika.is_still();
+    return pika -> is_still();
 }
 
 bool game_model::char_attacking( void ) const {
     
-    return pika.is_attacking();
+    return pika -> is_attacking();
 }
 
 void game_model::char_attack(int num) {
     
-    pika.do_attack(num);
+    pika -> use_move(num);
+}
+
+void game_model::char_charge( double sec ) {
+    
+    pika -> start_charging(sec);
 }
 
 // -4   -3   -2
@@ -121,12 +135,12 @@ bool game_model::allowed_on_map( const position & pos ) const {
 
 void game_model::move_character(int direction, double distance) {
     
-    if (pika.is_attacking()) return;
+    if (pika -> is_attacking()) return;
     
-    pika.step(direction, distance);
+    pika -> step(direction, distance);
     
-    if (is_outside_screen(    pika.get_position() )) pika.back(distance);
-    else if (!allowed_on_map( pika.get_position() )) pika.back(distance);
+    if (is_outside_screen(    pika -> get_position() )) pika -> back(distance);
+    else if (!allowed_on_map( pika -> get_position() )) pika -> back(distance);
 }
 
 const std::vector < character > & game_model::get_enemies( void ) {

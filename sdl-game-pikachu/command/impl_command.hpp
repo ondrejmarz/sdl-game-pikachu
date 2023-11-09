@@ -74,4 +74,20 @@ public:
     void execute() const override;
 };
 
+class move_quick_attack_char_command: public i_command {
+
+public:
+    move_quick_attack_char_command(game_model * model): i_command(model) { }
+    
+    void execute() const override;
+};
+
+class move_discharge_char_command: public i_command {
+
+public:
+    move_discharge_char_command(game_model * model): i_command(model) { }
+    
+    void execute() const override;
+};
+
 #endif /* impl_command_hpp */
